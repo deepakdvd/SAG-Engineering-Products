@@ -18,7 +18,7 @@
       font-size: 3.125rem;
       line-height: 3.125rem; }
   .navbar-dropdown .navbar-caption {
-    font-weight: 300;
+    font-weight: 700;
     white-space: normal;
     vertical-align: -4px;
     line-height: 3.125rem !important; }
@@ -81,7 +81,7 @@
     padding-left: 1rem; }
   .nav-dropdown .link {
     margin: .667em 1.667em;
-    font-weight: 300;
+    font-weight: 500;
     padding: 0;
     transition: color .2s ease-in-out; }
     .nav-dropdown .link.dropdown-toggle {
