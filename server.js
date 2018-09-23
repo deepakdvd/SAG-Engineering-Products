@@ -23,6 +23,10 @@ app.get('/',function(req,res){
 	res.render('index');
 	});
 
+app.get('/products',function(req,res){
+	res.render('products');
+	});
+
 app.get('/login',function(req,res){
 	res.render('login');
 	});
