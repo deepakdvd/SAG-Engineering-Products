@@ -31,6 +31,10 @@ app.get('/about',function(req,res){
 	res.render('about');
 	});
 
+app.get('/single-product',function(req,res){
+	res.render('single-product');
+	});
+
 app.get('/login',function(req,res){
 	res.render('login');
 	});
