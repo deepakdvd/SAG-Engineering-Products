@@ -4,63 +4,56 @@ var nodemailer = require('nodemailer');
 var app=ex();
 var http = require('http').Server(app);
 var bParser = require('body-parser');
-//var fs = require('fs-extra'); 
+
+const db1=require('./app/dbconnect');
+var db = db1.fdata();
+
+var busboy = require('connect-busboy');
+app.use(busboy());
+
+var square= require('./app')
+
 app.set('port', (process.env.PORT || 3000));
-//console.log('main index.js');
 
-//var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-//app.engine('html',require('hogan-express'));
 app.set('view engine','ejs');
 app.use(ex.static('public'));
    
-//app.set ('partials', {foo: 'foo'});   
 
 app.use(bParser.json());
 app.use(bParser.urlencoded({extended:false}));
 
-app.get('/',function(req,res){
-	res.render('index');
-	});
 
-app.get('/products',function(req,res){
-	res.render('products');
-	});
+// frontend index pages
 
-app.get('/about',function(req,res){
-	res.render('about');
-	});
+app.get('/',square.indexees);
+app.get('/products',square.indexees);
+app.get('/about',square.indexees);
+app.get('/login',square.indexees);
+app.get('/dashboard',square.indexees);
 
-app.get('/login',function(req,res){
-	res.render('login');
-	});
+app.post('/fileupload',square.indexees);
+app.post('/imgdelete',square.indexees);
 
-app.get('/dashboard',function(req,res){
-	res.render('dashboard');
-	});
-// app.get('/contact',function(req,res){
-// 	res.render('contact');
-// 	});
-
-// app.get('/about',function(req,res){
-// 	res.render('about');
+// app.get('/',function(req,res){
+// 	res.render('index');
 // 	});
 
 // app.get('/products',function(req,res){
 // 	res.render('products');
 // 	});
 
-// app.get('/services',function(req,res){
-// 	res.render('services');
+// app.get('/about',function(req,res){
+// 	res.render('about');
 // 	});
 
-// app.get('/dashboard',function(req,res){
-//   res.render('dashboard');
-//   });
-
 // app.get('/login',function(req,res){
-//   res.render('login');
-//   });
+// 	res.render('login');
+// 	}); 
+
+// app.get('/dashboard',function(req,res){
+// 	res.render('dashboard');
+// 	});
+
 
 
 

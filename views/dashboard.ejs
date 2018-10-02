@@ -47,7 +47,7 @@
 
    <div class="tab-pane active" id="1">
    <div class="col-sm-12">
-   <form action="proadd" method="post" enctype="multipart/form-data">
+   <form method="post" action="fileupload" enctype="multipart/form-data">
        <div class="col-sm-6 col-md-6 col-md-push-3">
          <div class="form-group"> 
        <label for="full_name_id" class="control-label">Image Name</label>
@@ -73,23 +73,22 @@
 
   </div>
   </div>
-
+<%for(var i=0;i < alldata.length; i++){%>
  <div class="tab-pane" id="2">
    
     <div class="col-sm-12 col-md-10 col-md-push-1 liftofitm">
       <div class="col-sm-4"></div> 
-      <div class="col-sm-4"><h2></h2></div>
+      <div class="col-sm-4"><h2><%=alldata[i].Title%></h2></div>
       <div class="col-sm-4">
       <h2>
         <button class="btn btn-warning btn-lg" >Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-danger btn-lg">Delete</button>
+        <button class="btn btn-danger btn-lg" onclick="deleteimage('<%=alldata[i]._id%>')">Delete</button>
         </h2>
        </div>
     </div>
    
-
  </div>
-
+<%}%>
      <div class="tab-pane" id="vv3">
    <div class="col-sm-12">
    <form action="update" method="post" enctype="multipart/form-data">
@@ -133,7 +132,23 @@
       $('#2').show();
       $('#1').hide();
     }
+
+
+
+    function deleteimage(id){
+      $.ajax({
+           type: 'POST',
+          url: '/imgdelete?id='+id,
+          success: function(data) {
+            alert('Image sucessfully Deleted')
+          }
+        });
+      console.log(id);
+    }
   </script>
+
+
+
 </div>
 <hr>
 </div>
