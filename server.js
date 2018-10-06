@@ -35,6 +35,10 @@ app.get('/contact',function(req,res){
 	res.render('contact');
 	});
 
+app.get('/clients',function(req,res){
+	res.render('clients');
+	});
+
 app.get('/single-product',function(req,res){
 	res.render('single-product');
 	});
