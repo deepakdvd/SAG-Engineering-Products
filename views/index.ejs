@@ -212,16 +212,18 @@
           <div class="mbr-gallery-layout-default">
             <div>
               <div>
+                <%for(var i=0;i< random.length;i++){%>
                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">
                   <div href="#lb-gallery2-h" data-slide-to="0" data-toggle="modal">
-                    <img src="assets/images/pizza-making-link-table-with-refrigerator-500x500.png" alt="">
-                    <a href="/single-product">
+                    <img src="<%=random[i].image.imn%>" alt=""> <!--assets/images/pizza-making-link-table-with-refrigerator-500x500.png-->
+                    <a href="/single-product?id=<%=random[i]._id%>">
                       <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">Pizza making link table with refrigerator</span>
+                      <span class="mbr-gallery-title mbr-fonts-style display-7"><%=random[i].Title%></span>
                     </a>
                   </div>
                 </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Responsive">
+                <%}%>
+                <!-- <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Responsive">
                   <div href="#lb-gallery2-h" data-slide-to="1" data-toggle="modal">
                     <img src="assets/images/4-door-refrigerator-500x500.jpg" alt="">
                     <a href="/single-product">
@@ -229,8 +231,8 @@
                       <span class="mbr-gallery-title mbr-fonts-style display-7">4 Door Refrigerator</span>
                     </a>
                   </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Creative">
+                </div> -->
+                <!-- <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Creative">
                   <div href="#lb-gallery2-h" data-slide-to="2" data-toggle="modal">
                     <img src="assets/images/hot-display-counter-250x250.jpg" alt="">
                     <a href="/single-product">
@@ -283,7 +285,7 @@
                       <span class="mbr-gallery-title mbr-fonts-style display-7">Cooking gas</span>
                     </a>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="clearfix"></div>

@@ -80,7 +80,7 @@
             <div class="col-12">
                 <p class="mbr-text mb-0 mbr-fonts-style display-2">PRODUCTS</p>
                 <a class="btn display-4 btn-primary" href="#" style="border-radius: 100px"  data-toggle="modal" data-target="#myModal">Filter by Categories</a>
-                <input type="text" class="btn display-4 btn-primary" name="" style="    text-align: center;
+                <input type="text" class="btn display-4 btn-primary" name="" oninput="searchtitle(this.value)" style="text-align: center;
     border-radius: 100px;
     border: 1px solid #879a9f;
     background: rgba(0,0,0,0.1);" placeholder="Search..">
@@ -94,96 +94,37 @@
     <div class="modal-dialog" style="max-width: 900px">
         <div class="modal-content">
             <div class="modal-body">
-                    <p class="mbr-text mb-0 mbr-fonts-style display-2" style="text-align: center; font-size: 30px;padding-bottom: 20px;">CATEGORIES</p>
+               <div class="row">
+                    <div class="col-sm-6" style="text-align: right; font-size: 30px;padding-bottom: 20px;">CATEGORIES </div>
+                   
+                    <div class="col-sm-6" style="text-align: right; font-size: 30px;padding-bottom: 20px;" onclick="shoecatedata()">show</div>
+                  </div>
                 <form>
                     <div class="row" style="padding-bottom: 50px">
+                        <%
+                        console.log("hello");
+                        console.log(categories);
+                        for(var m=0;m< categories.length;m++){%>
                       <div class="col-sm-4" style="text-align: center;">
+                        
                           <div class="checkbox">
+                              <label style="color: black; font-size: 20px;"><input type="checkbox" onchange="categorysort(this)" value="<%=categories[m]._id%>"><%=categories[m]._id%></label>
+                            </div>
+                            
+                      </div>
+                      <%}%>
+                      <!-- <div class="col-sm-4" style="text-align: center;">
+                         <div class="checkbox">
                               <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
                             </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
+                            
                       </div>
                       <div class="col-sm-4" style="text-align: center;">
                          <div class="checkbox">
                               <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
                             </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                      </div>
-                      <div class="col-sm-4" style="text-align: center;">
-                         <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 2</label>
-                            </div>
-                            <div class="checkbox disabled">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 3</label>
-                            </div>
-                      </div>
+                            
+                      </div> -->
                     </div>
                 </form>
             </div>
@@ -211,17 +152,19 @@
         <div class="mbr-gallery-row">
           <div class="mbr-gallery-layout-default">
             <div>
-              <div>
+              <div id="datashow">
+                <%for(var i=0;i< products.length;i++){%>
                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">
                   <div href="#lb-gallery2-h" data-slide-to="0" data-toggle="modal">
-                    <img src="assets/images/pizza-making-link-table-with-refrigerator-500x500.png" alt="">
-                    <a href="/single-product">
+                    <img src="<%=products[i].image.imn%>" alt="image">
+                    <a href="/single-product?id=<%=products[i]._id%>">
                       <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">Pizza making link table with refrigerator</span>
+                      <span class="mbr-gallery-title mbr-fonts-style display-7"><%=products[i].Title%></span>
                     </a>
                   </div>
                 </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Responsive">
+                <%}%>
+                <!-- <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Responsive">
                   <div href="#lb-gallery2-h" data-slide-to="1" data-toggle="modal">
                     <img src="assets/images/4-door-refrigerator-500x500.jpg" alt="">
                     <a href="/single-product">
@@ -283,7 +226,7 @@
                       <span class="mbr-gallery-title mbr-fonts-style display-7">Cooking gas</span>
                     </a>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="clearfix"></div>
@@ -408,3 +351,73 @@
     <input name="animation" type="hidden">
   </body>
 </html>
+
+<script>
+  var catelist=[];
+  function categorysort(data){
+    
+    console.log(data);
+    if($(data).prop("checked") == true){
+      var temp=$(data).val();
+      catelist.push(temp);
+      console.log(catelist);
+    }else{
+      var temp1=$(data).val();
+      var ind=catelist.indexOf(temp1)
+      catelist.splice(ind,1);
+      console.log(catelist);
+    }
+  }
+
+  function shoecatedata(){
+    if(catelist.length>0){
+
+    $.ajax({
+           type: 'POST',
+          url: '/selectedcate?data='+catelist,
+          success: function(data) {
+            
+            $('#datashow').empty();
+            for(var i=0;i<data.length;i++){
+            $('#datashow').append('<div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">\
+                  <div href="#lb-gallery2-h" data-slide-to="0" data-toggle="modal">\
+                    <img src="'+data[i].image.imn+'" alt="image">\
+                    <a href="/single-product?id='+data[i]._id+'">\
+                      <span class="icon-focus"></span>\
+                      <span class="mbr-gallery-title mbr-fonts-style display-7">'+data[i].Title+'</span>\
+                    </a>\
+                  </div>\
+                </div>');
+              }
+          }
+        });
+      }else{
+        alert('please select alteast one category')
+        }
+     
+  }
+
+  function searchtitle(title){
+    console.log(title);
+    if(title.length>3){
+    $.ajax({
+           type: 'POST',
+          url: '/searchtitle?data='+title,
+          success: function(data) {
+            $('#datashow').empty();
+            for(var i=0;i<data.length;i++){
+            $('#datashow').append('<div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">\
+                  <div href="#lb-gallery2-h" data-slide-to="0" data-toggle="modal">\
+                    <img src="'+data[i].image.imn+'" alt="image">\
+                    <a href="/single-product?id='+data[i]._id+'">\
+                      <span class="icon-focus"></span>\
+                      <span class="mbr-gallery-title mbr-fonts-style display-7">'+data[i].Title+'</span>\
+                    </a>\
+                  </div>\
+                </div>');
+              }
+          }
+        });
+      }
+  }
+</script>

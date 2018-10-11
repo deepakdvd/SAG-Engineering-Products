@@ -50,10 +50,45 @@
    <form method="post" action="fileupload" enctype="multipart/form-data">
        <div class="col-sm-6 col-md-6 col-md-push-3">
          <div class="form-group"> 
-       <label for="full_name_id" class="control-label">Image Name</label>
+       <label for="full_name_id" class="control-label">Tital</label>
        <input type="text" class="form-control" id="" name="imgname" placeholder="Enter name of the image" required>
      </div>
      <br>
+     <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Category</label>
+      <input type="text" list="browsers" class="form-control" id=""  name="cate" placeholder="Enter Category" required>
+      <datalist id="browsers">
+        <%for(var i=0;i< categories.length; i++){%>
+          <option value="<%=categories[i]._id%>">
+         <%}%>
+        </datalist>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Description</label>
+      <textarea type="text" class="form-control" rows="4" cols="50" id="" name="desc" placeholder="Enter Description" required></textarea>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Product Detail</label>
+      <input type="text" class="form-control" id="" name="pdetail" placeholder="Enter Product Detail" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Features ("," seprated)</label>
+      <input type="text" class="form-control" id="" name="feature" placeholder="Enter Features" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Specifications ("," seprated)</label>
+      <input type="text" class="form-control" id="" name="specifi" placeholder="Enter specifications" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Additional Information ("," seprated)</label>
+      <input type="text" class="form-control" id="" name="addinfo" placeholder="Enter Additional Info" required>
+    </div>
+    <br>
       <div class="form-group"> 
        <label for="full_name_id" class="control-label">Upload Image { Size must be 400 x 400 }</label>
        <input type="file" class="form-control" id="" name="image" placeholder="Enter your email-id" required>
@@ -99,6 +134,36 @@
            <input type="text" class="form-control" id="imgname" name="imgname" placeholder="" readonly>
          </div>
      <br>
+     <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Category</label>
+      <input type="text" class="form-control" id="" name="cate" placeholder="Enter Category" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Description</label>
+      <textarea type="text" class="form-control" rows="4" cols="50" id="" name="desc" placeholder="Enter Description" required></textarea>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Product Detail</label>
+      <input type="text" class="form-control" id="" name="pdetail" placeholder="Enter Product Detail" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Features ("," seprated)</label>
+      <input type="text" class="form-control" id="" name="feature" placeholder="Enter Features" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Specifications ("," seprated)</label>
+      <input type="text" class="form-control" id="" name="specifi" placeholder="Enter specifications" required>
+    </div>
+    <br>
+    <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Additional Information ("," seprated)</label>
+      <input type="text" class="form-control" id="" name="addinfo" placeholder="Enter Additional Info" required>
+    </div>
+    <br>
       <div class="form-group"> 
        <label for="full_name_id" class="control-label">Upload New Image { Size must be 400 x 400 }</label>
        <input type="file" class="form-control" id="" name="image" placeholder="Enter your email-id" required>
@@ -143,8 +208,23 @@
             alert('Image sucessfully Deleted')
           }
         });
-      console.log(id);
+     
     }
+
+
+    // function categorylist(value){
+      
+    //   $.ajax({
+    //        type: 'POST',
+    //       url: '/catelist?key='+value,
+    //       success: function(data) {
+    //         console.log(data);
+    //         alert('got list');
+    //       }
+    //     });
+      
+    // }
+
   </script>
 
 

@@ -202,13 +202,13 @@
         font-weight: 200;">
         <div class="product col-md-3 service-image-left">
           <center>
-            <img id="item-display" src="assets/images/pizza-making-link-table-with-refrigerator-500x500.png" alt="">
+            <img id="item-display" src="<%=single.image.imn%>" alt="">
           </center>
         </div>
       </div>
       <div class="col-12 col-md-8" style="padding-top:10px;padding-bottom: 10px;color: #007bff;font-size: 15px;
         font-weight: 200;">
-        <div class="product-title">Pizza making link table with refrigerator</div>
+        <div class="product-title"><%=single.Title%></div>
         <!-- <div class="product-desc">The Corsair Gaming Series GS600 is the ideal price/performance choice for mid-spec gaming PC</div> -->
         <div class="product-rating">
           <i class="fa fa-star gold"></i> 
@@ -234,7 +234,7 @@
         font-weight: 200;">
         <h4 style="font-weight: 400;">Description</h4>
           <div class="panel-body" style="border: 1px solid rgba(0,0,0,.1);
-            border-radius: 3px;color: #868e96;padding: 30px">With the aid of the supplying and manufacturing units, our company is the connoisseur in offering best quality pizza Counter com refrigerator. We produce these counters utilizing premium quality resources coupled with latest techniques. Then these counters are scrutinized based on specific parameters to guarantee its quality. Our customers can avail these counters at market leading prices along with other personalized services to meet their requirements.
+            border-radius: 3px;color: #868e96;padding: 30px"><%=single.description%>
         </div>
       </div>
     </div>
@@ -252,31 +252,16 @@
               </tr>
             </thead>
             <tbody>
+                <%for(var i=0;i< single.product_detail.length;i++){
+                  var temp=single.product_detail[i].split(',');
+                  
+                  
+                  %>
               <tr>
-                <td>Surface Treatment</td>
-                <td>Galvanized</td>
-                <!-- <td>john@example.com</td> -->
+                <td><%=temp[0]%></td>
+                <td><%=temp[1]%></td>
               </tr>
-              <tr>
-                <td>Finish</td>
-                <td>Polished</td>
-                <!-- <td>john@example.com</td> -->
-              </tr>
-              <tr>
-                <td>Power Source  </td>
-                <td>Electricity</td>
-                <!-- <td>mary@example.com</td> -->
-              </tr>
-              <tr>
-                <td>Mode</td>
-                <td>Manual</td>
-                <!-- <td>july@example.com</td> -->
-              </tr>
-              <tr>
-                <td>Width</td>
-                <td>SS</td>
-                <!-- <td>july@example.com</td> -->
-              </tr>
+              <%}%>
             </tbody>
           </table>
       </div>
@@ -287,9 +272,11 @@
         font-weight: 200;">
         <h4 style="font-weight: 400;">Features</h4>
         <ul class="list-group"  style="color: #868e96;">
-          <li class="list-group-item">Longer service life</li>
-          <li class="list-group-item">Attractive designs</li>
-          <li class="list-group-item">Energy efficiency</li>
+            <%for(var i=0;i< single.features.length;i++){%>
+          <li class="list-group-item"><%=single.features[i]%></li>
+          <%}%>
+          <!-- <li class="list-group-item">Attractive designs</li>
+          <li class="list-group-item">Energy efficiency</li> -->
         </ul>
       </div>
     </div>
@@ -299,9 +286,9 @@
         font-weight: 200;">
         <h4 style="font-weight: 400;">Specifications</h4>
         <ul class="list-group"  style="color: #868e96;">
-          <li class="list-group-item">Longer service life</li>
-          <li class="list-group-item">Attractive designs</li>
-          <li class="list-group-item">Energy efficiency</li>
+            <%for(var i=0;i< single.specifications.length;i++){%>
+          <li class="list-group-item"><%=single.specifications[i]%></li>
+          <%}%>
         </ul>
       </div>
     </div>
@@ -311,9 +298,10 @@
         font-weight: 200;">
         <h4 style="font-weight: 400;">Additional Information</h4>
         <ul class="list-group"  style="color: #868e96;">
-          <li class="list-group-item">Longer service life</li>
-          <li class="list-group-item">Attractive designs</li>
-          <li class="list-group-item">Energy efficiency</li>
+            <%for(var i=0;i< single.additional_info.length;i++){%>
+          <li class="list-group-item"><%=single.additional_info[i]%></li>
+          <%}%>
+          
         </ul>
       </div>
     </div>

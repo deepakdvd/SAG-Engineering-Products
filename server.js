@@ -30,6 +30,13 @@ app.get('/products',square.indexees);
 app.get('/about',square.indexees);
 app.get('/login',square.indexees);
 app.get('/dashboard',square.indexees);
+app.get('/single-product',square.indexees);
+
+app.post('/fileupload',square.indexees);
+app.post('/allimages',square.indexees);
+app.post('/imgdelete',square.indexees);
+app.post('/selectedcate',square.indexees);
+app.post('/searchtitle',square.indexees);
 
 app.get('/contact',function(req,res){
 	res.render('contact');
@@ -39,13 +46,13 @@ app.get('/clients',function(req,res){
 	res.render('clients');
 	});
 
-app.get('/single-product',function(req,res){
-	res.render('single-product');
-	});
+// app.get('/single-product',function(req,res){
+// 	res.render('single-product');
+// 	});
 
-app.get('/login',function(req,res){
-	res.render('login');
-	});
+// app.get('/login',function(req,res){
+// 	res.render('login');
+// 	});
 
 // app.get('/',function(req,res){
 // 	res.render('index');
