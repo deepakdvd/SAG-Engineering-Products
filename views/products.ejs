@@ -355,21 +355,21 @@
   var catelist=[];
   function categorysort(data){
     
-    console.log(data);
     if($(data).prop("checked") == true){
       var temp=$(data).val();
       catelist.push(temp);
-      console.log(catelist);
+      
     }else{
       var temp1=$(data).val();
       var ind=catelist.indexOf(temp1)
       catelist.splice(ind,1);
-      console.log(catelist);
+      
     }
   }
 
   function shoecatedata(){
     if(catelist.length>0){
+      $('#myModal').modal('hide');
 
     $.ajax({
            type: 'POST',
@@ -397,7 +397,7 @@
   }
 
   function searchtitle(title){
-    console.log(title);
+   
     if(title.length>3){
     $.ajax({
            type: 'POST',

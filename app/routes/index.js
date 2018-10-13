@@ -54,7 +54,11 @@ module.exports = () => {
         db.collection('products').findOne({ _id: ObjectId(req.query.id) }, function (err, result1) {
           if (err) throw err;
 
-          res.render('single-product', { single: result1 });
+          db.collection('products').find({ category: result1.category }).limit(4).toArray( function (err, result) {
+            if (err) throw err;
+
+          res.render('single-product', { single: result1,related:result });
+          });
         });
       },
 
