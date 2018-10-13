@@ -59,10 +59,27 @@ module.exports = () => {
       },
 
       '/login': (req, res) => {
-        res.render('login')
+        if (!req.user && !req.session.user) {
+          if(req.query.resp){
+            res.render('login',{invalid:true});
+          }else{
+            res.render('login',{invalid:false});
+          }
+         
+        }else{
+          
+          res.redirect('/dashboard');
+        }
       },
 
       '/dashboard': (req, res) => {
+       
+        if (!req.user && !req.session.user) {
+         
+          res.redirect('/login');
+        }else{
+          
+        
         db.collection('products').aggregate([
           { $group: { _id: "$category", num_tutorial: { $sum: 1 } } }
         ], function (err, result) {
@@ -71,11 +88,23 @@ module.exports = () => {
           db.collection('products').find({}).toArray(function (err, result1) {
             if (err) throw err;
 
-
-            res.render('dashboard', { alldata: result1, categories: result });
+            if(req.query.resp){
+              res.render('dashboard', { alldata: result1, categories: result,savesuccess:true });
+            }else{
+              res.render('dashboard', { alldata: result1, categories: result,savesuccess:false });
+            }
+            
           });
 
         });
+      }
+      
+      },
+      '/logout': (req, res) => {
+        console.log("helllllo");
+        req.session.reset();
+      
+      res.redirect('/login');
       },
 
 
@@ -85,27 +114,7 @@ module.exports = () => {
 
         db.collection('user').insert({
           businessname: req.body.businessname
-          , website: req.body.website
-          , password: req.body.password
-          , competitors: req.body.competitors
-          , services: req.body.services
-          , aditional: req.body.aditional
-          , Pemail: req.body.Pemail
-          , name: req.body.name
-          , bemail: req.body.bemail
-          , address: req.body.address
-          , pin: req.body.pin
-          , state: req.body.state
-          , country: req.body.country
-          , mobile: req.body.mobile
-          , taddress: req.body.taddress
-          , GWebuname: req.body.GWebuname
-          , GWebpass: req.body.GWebpass
-          , weblogin: req.body.weblogin
-          , WebAdminUname: req.body.WebAdminUname
-          , WebAdminpass: req.body.WebAdminpass
-          , HostUname: req.body.HostUname
-          , Hostpass: req.body.Hostpass
+         
           , ticketid: []
         }, function (err, result) {
           if (err) throw err;
@@ -117,6 +126,29 @@ module.exports = () => {
         });
 
       },
+      '/session-access':(req,res) => {
+  
+        
+        var name= req.body.username;
+        var password= req.body.pass;
+        db.collection('userdetail').findOne({ username: name}, function (err, result) {
+          
+          if(result){
+            
+        if (name==result.username && password==result.password){
+
+          req.session.user = name;
+          res.redirect('/dashboard');
+        }else{
+
+          res.redirect('/login?resp=invalid');
+        }
+      }else{
+        res.redirect('/login?resp=invalid');
+      }
+      });
+    },
+
       '/selectedcate': (req, res) => {
         var list=[];
         var Data=req.query.data.split(',');
@@ -138,6 +170,7 @@ module.exports = () => {
         }
         });
       },
+      
       
       '/searchtitle':(req, res)=>{
 

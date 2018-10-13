@@ -8,6 +8,9 @@ var bParser = require('body-parser');
 const db1=require('./app/dbconnect');
 var db = db1.fdata();
 
+var cParser = require('cookie-parser');
+var session = require('client-sessions');
+
 var busboy = require('connect-busboy');
 app.use(busboy());
 
@@ -17,6 +20,18 @@ app.set('port', (process.env.PORT || 3000));
 
 app.set('view engine','ejs');
 app.use(ex.static('public'));
+app.enable ('view cache');
+
+// session
+app.use(session({
+	cookieName: 'session',
+	secret: 'naio1#2ospox9029(*&9{}nskjn;;',
+	duration: 30*60*1000,//24 * 60 * 60 * 1000,
+	//activeDuration: 5 * 60 * 1000,
+	 httpOnly: true,
+	secure: true,
+	ephemeral: true
+  }));
    
 
 app.use(bParser.json());
@@ -31,12 +46,16 @@ app.get('/about',square.indexees);
 app.get('/login',square.indexees);
 app.get('/dashboard',square.indexees);
 app.get('/single-product',square.indexees);
+app.get('/logout',square.indexees);
 
 app.post('/fileupload',square.indexees);
 app.post('/allimages',square.indexees);
 app.post('/imgdelete',square.indexees);
 app.post('/selectedcate',square.indexees);
 app.post('/searchtitle',square.indexees);
+app.post('/session-access',square.indexees);
+app.post('/passwordchange',square.indexees);
+
 
 app.get('/contact',function(req,res){
 	res.render('contact');

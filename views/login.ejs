@@ -35,7 +35,7 @@
        <div class="col-sm-6 col-md-4 col-md-push-4">
          <div class="form-group"> 
        <label for="full_name_id" class="control-label">Username</label>
-       <input type="text" class="form-control" name="name" placeholder="Enter Username" required>
+       <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
      </div>
      <br>
       <div class="form-group"> 
@@ -50,7 +50,72 @@
        </div>
     </form>
 
+
+
+
+    <form action="/passwordchange" method="post">
+      <div class="col-sm-6 col-md-4 col-md-push-4">
+          <div class="form-group"> 
+              <label for="full_name_id" class="control-label">User Name</label>
+              <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+            </div>
+            <br>
+        <div class="form-group"> 
+      <label for="full_name_id" class="control-label">Current Password</label>
+      <input type="text" class="form-control" name="currentpass" placeholder="Enter Old Password" required>
+    </div>
+    <br>
+     <div class="form-group"> 
+      <label for="full_name_id" class="control-label">New Password</label>
+      <input type="password" class="form-control" name="newpass" placeholder="Enter New password" required>
+    </div>
+    <br>
+    
+      </div>
+
+      <div class="col-sm-12 text-center">
+      <button class="btn btn-lg btn-info">Submit</button>
+      </div>
+   </form>
+
    </div>
 </div>
+
+
+
+
+
+
+
+
+<div id="myModal" class="modal fade" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-h" style="padding-right: 0px !important;">
+    <div class="modal-dialog" style="max-width: 900px">
+        <div class="modal-content">
+            <div class="modal-body">
+               <div class="row">
+                    <div class="col-sm-12" style="text-align: center; font-size: 30px;padding-bottom: 20px;">Invalid Username/Password </div>
+                   
+                    
+                  </div>
+                <form>
+                    <div class="row" style="padding-bottom: 50px">
+                       
+                      
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <a class="btn display-4 btn-primary" href="#" style="display;none"  data-toggle="modal" data-target="#myModal"></a> -->
+
+  <%if(invalid){%>
+  <script>
+    console.log("hello");
+    $('#myModal').modal('show');
+</script>
+<%}%>
+
 </body>
 </html>

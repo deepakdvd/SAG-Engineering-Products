@@ -23,13 +23,67 @@
   .liftofitm{
     border-bottom: 1px solid grey;
   }
+
+
+
+
+
+
+/*loader*/
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+
+
+
+
+
+
   </style>
+  <%if(savesuccess){%>
+    <script>
+        console.log("suuuuuuuuucccess");
+      $('#load').hide();
+      </script>
+
+  <%}%>
 </head>
 <body class="style-1">
 
+
 <div class="container-fluid">
 <div class="row">
+
+
+
+  <div class="loader" id="load" style="display:none;"></div>
+
+
+
+
   <a href="/dashboard"><h1 class="text-center contit">Dashboard</h1></a>
+  <a href="/logout"><h1 class="text-right contit">Logout</h1></a>
   <hr>
   <h3 class="text-center contit">Welcome !</h3>
 
@@ -50,7 +104,7 @@
    <form method="post" action="fileupload" enctype="multipart/form-data">
        <div class="col-sm-6 col-md-6 col-md-push-3">
          <div class="form-group"> 
-       <label for="full_name_id" class="control-label">Tital</label>
+       <label for="full_name_id" class="control-label">Title</label>
        <input type="text" class="form-control" id="" name="imgname" placeholder="Enter name of the image" required>
      </div>
      <br>
@@ -102,7 +156,7 @@
        </div>
 
      <div class="col-sm-12 text-center">
-     <button class="btn btn-lg btn-info">Submit</button>
+     <button class="btn btn-lg btn-info" onclick="showloader()" type="submit">Submit</button>
      </div>
     </form>
 
@@ -212,18 +266,32 @@
     }
 
 
-    // function categorylist(value){
+    // function logout(){
       
     //   $.ajax({
     //        type: 'POST',
-    //       url: '/catelist?key='+value,
+    //       url: '/logout',
     //       success: function(data) {
     //         console.log(data);
-    //         alert('got list');
+    //         // alert('logout successfully');
     //       }
     //     });
       
     // }
+
+
+    // $('#myForm')
+    // .ajaxForm({
+    //     url : 'myscript.php', // or whatever
+    //     dataType : 'json',
+    //     success : function (response) {
+    //         alert("The server says: " + response);
+    //     }
+    // })
+    function showloader(){
+      console.log("helelelelelele");
+      $('#load').show();
+    }
 
   </script>
 
