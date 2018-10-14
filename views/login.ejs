@@ -80,31 +80,18 @@
           <h4 class="modal-title">Reset password</h4>
         </div>
         <div class="modal-body" style="overflow: auto;">
-          <form action="/passwordchange" method="post">
+          <form >
             <div class="col-sm-12">
               <div class="form-group"> 
-                <label for="full_name_id" class="control-label">User Name</label>
+                <label for="full_name_id" class="control-label">Username/Email</label>
                 <input type="text" class="form-control" name="username" placeholder="Enter username" required>
-              </div>
-              <br>
-              <div class="form-group"> 
-                <label for="full_name_id" class="control-label">Current Password</label>
-                <input type="text" class="form-control" name="currentpass" placeholder="Enter Old Password" required>
-              </div>
-              <br>
-              <div class="form-group"> 
-                <label for="full_name_id" class="control-label">New Password</label>
-                <input type="password" class="form-control" name="newpass" placeholder="Enter New password" required>
               </div>
               <br>
             </div>
             <div class="col-sm-12 text-center">
-            <button class="btn btn-lg btn-info">Submit</button>
+            <button class="btn btn-lg btn-info" href="/resetpass">Submit</button>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

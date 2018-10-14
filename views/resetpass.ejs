@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Reset password</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favi.jpg" type="image/jpg" sizes="32x32">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+  <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+  <style type="text/css">
+    .nav-tabs > li {
+      float:none;
+      display:inline-block;
+      zoom:1.4;
+    }
+    
+    .nav-tabs {
+      text-align:center;
+    }
+  </style>
+</head>
+
+<body class="style-1">
+  <div class="container-fluid" style="margin-bottom: 40px">
+    <div class="row">
+      <div class="col-sm-12 text-center" style="border-bottom: 1px solid grey;
+        font-size: 25px;
+        color: white;
+        background-color: #1e90ff;
+        padding: 15px;">
+        Reset password
+      </div>
+      <div class="col-sm-12 text-center" style="border-bottom: 1px solid grey;
+        margin-bottom: 40px; 
+        color: red;
+        padding: 15px;">
+        An OTP has been sent to your account
+      </div>
+      <form action="/session-access" method="post">
+        <div class="col-sm-6 col-md-4 col-md-push-4">
+          <div class="form-group"> 
+            <label for="full_name_id" class="control-label">OTP</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+          </div>
+          <br>
+          <div class="form-group"> 
+            <label for="full_name_id" class="control-label">Username/Email</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+          </div>
+          <br>
+          <div class="form-group"> 
+            <label for="full_name_id" class="control-label">New Password</label>
+            <input type="password" class="form-control" name="pass" placeholder="Enter your password" required>
+          </div>
+          <br>
+          <div class="form-group"> 
+            <label for="full_name_id" class="control-label">Confirm New Password</label>
+            <input type="password" class="form-control" name="pass" placeholder="Enter your password" required>
+          </div>
+          <br>
+        </div>
+        <div class="col-sm-12 text-center">
+          <button class="btn btn-lg btn-info">Submit</button>
+        </div>
+      </form>
+   </div>
+  </div>
+
+</body>
+</html>
