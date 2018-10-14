@@ -9,58 +9,51 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="all">
   <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
-
   <style type="text/css">
     .nav-tabs > li {
       float:none;
       display:inline-block;
       zoom:1.4;
-  }
+    }
 
-  .nav-tabs {
-      text-align:center;
-  }
-  .liftofitm{
-    border-bottom: 1px solid grey;
-  }
+    .nav-tabs {
+        text-align:center;
+    }
 
+    .liftofitm{
+      border-bottom: 1px solid grey;
+    }
+    /*loader*/
+    .loader{
+      margin: 0 0 2em;
+      height: 100px;
+      width: 20%;
+      text-align: center;
+      padding: 1em;
+      margin: 0 auto 1em;
+      display: none;
+      vertical-align: top;
+      position: fixed;
+      width: 100%;
+      background: rgba(255,255,255,0.9);
+      height: 100%;
+      z-index: 99999;
+    }
 
-
-
-
-
-/*loader*/
-
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite; /* Safari */
-  animation: spin 2s linear infinite;
-}
-
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
-
-
-
-
-
-
-
+    #loader-1 {
+      top: 50%;
+      position: relative;
+      transform: translateY(-50%);
+    }
+    /*
+      Set the color of the icon
+    */
+    svg path,
+    svg rect{
+      fill: #1e90ff;
+    }
   </style>
+
   <%if(savesuccess){%>
     <script>
         console.log("suuuuuuuuucccess");
@@ -70,31 +63,44 @@
   <%}%>
 </head>
 <body class="style-1">
-
+  <!-- Loader -->
+  <div class="loader loader--style3" title="2">
+    <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       width="40px" height="40px" viewBox="0 0 50 50" xml:space="preserve">
+    <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+      <animateTransform attributeType="xml"
+        attributeName="transform"
+        type="rotate"
+        from="0 25 25"
+        to="360 25 25"
+        dur="0.6s"
+        repeatCount="indefinite"/>
+      </path>
+    </svg>
+  </div>
 
 <div class="container-fluid">
 <div class="row">
-
-
-
-  <div class="loader" id="load" style="display:none;"></div>
-
-
-
-
-  <a href="/dashboard"><h1 class="text-center contit">Dashboard</h1></a>
-  <a href="/logout"><h1 class="text-right contit">Logout</h1></a>
-  <hr>
+  <div class="col-sm-12 text-center" style="border-bottom: 1px solid grey;
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: #1e90ff;
+    padding: 15px;">
+    Dashboard
+    <a href="/logout" style="position: absolute;
+    right: 10px;
+    top: 20px;">
+      <span class="glyphicon glyphicon-off"></span>
+    </a>
+  </div>
   <h3 class="text-center contit">Welcome !</h3>
-
   <ul class="nav nav-tabs text-center">
-      <li class="active">
-        <a  href="#1" data-toggle="tab" onclick="showA();">Add Image</a>
-      </li>
-      <li><a href="#2" data-toggle="tab" onclick="showB();">Edit Image</a>
-      </li>
-      <li><a href="#v3" data-toggle="tab" style="display: none;">Edit Image</a>
-      </li>
+    <li class="active">
+      <a  href="#1" data-toggle="tab" onclick="showA();">Add Image</a>
+    </li>
+    <li><a href="#2" data-toggle="tab" onclick="showB();">Edit Image</a>
+    </li>
   </ul>
 
 <div class="tab-content clearfix">
@@ -144,7 +150,7 @@
     </div>
     <br>
       <div class="form-group"> 
-       <label for="full_name_id" class="control-label">Upload Image { Size must be 400 x 400 }</label>
+       <label for="full_name_id" class="control-label">Upload Image { Size must be 300 x 300 }</label>
        <input type="file" class="form-control" id="" name="image" placeholder="Enter your email-id" required>
      </div>
      <br>
@@ -154,31 +160,35 @@
   </div>
   <br> -->
        </div>
-
      <div class="col-sm-12 text-center">
      <button class="btn btn-lg btn-info" onclick="showloader()" type="submit">Submit</button>
      </div>
     </form>
+  </div>
+  </div>
 
-  </div>
-  </div>
-<%for(var i=0;i < alldata.length; i++){%>
- <div class="tab-pane" id="2">
-   
-    <div class="col-sm-12 col-md-10 col-md-push-1 liftofitm">
-      <div class="col-sm-4"></div> 
-      <div class="col-sm-4"><h2><%=alldata[i].Title%></h2></div>
-      <div class="col-sm-4">
-      <h2>
-        <button class="btn btn-warning btn-lg" >Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-danger btn-lg" onclick="deleteimage('<%=alldata[i]._id%>')">Delete</button>
-        </h2>
-       </div>
+  <div class="tab-pane" id="2">
+    <div class="input-group" style="padding: 15px;">
+      <input type="text" class="form-control" placeholder="Search" name="search">
+      <div class="input-group-btn">
+        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
     </div>
-   
- </div>
-<%}%>
-     <div class="tab-pane" id="vv3">
+    <%for(var i=0;i < alldata.length; i++){%>
+      <div class="col-sm-12 col-md-10 col-md-push-1" style="padding: 10px;border-bottom: 1px solid #ccc">
+        <div class="col-sm-4"><img src="https://via.placeholder.com/100x100"></div> 
+        <div class="col-sm-4"><h2><%=alldata[i].Title%></h2></div>
+        <div class="col-sm-4">
+          <h2>
+            <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger btn-lg" onclick="deleteimage('<%=alldata[i]._id%>')">Delete</button>
+          </h2>
+         </div>
+      </div>
+    <%}%>
+  </div>
+
+<!--      <div class="tab-pane" id="vv3">
    <div class="col-sm-12">
    <form action="update" method="post" enctype="multipart/form-data">
    <input type="hidden" name="unameid" id="unameid">
@@ -231,7 +241,73 @@
     </form>
 
   </div>
+  </div> -->
+
+    <!-- Reset password modal -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit product</h4>
+        </div>
+        <div class="modal-body" style="overflow: auto;">
+          <form action="update" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="unameid" id="unameid">
+            <div class="col-sm-12">
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Enter new Name</label>
+                <input type="text" class="form-control" id="imgname" name="imgname" placeholder="" readonly>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Category</label>
+                <input type="text" class="form-control" id="" name="cate" placeholder="Enter Category" required>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Description</label>
+                <textarea type="text" class="form-control" rows="4" cols="50" id="" name="desc" placeholder="Enter Description" required></textarea>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Product Detail</label>
+                <input type="text" class="form-control" id="" name="pdetail" placeholder="Enter Product Detail" required>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Features ("," seprated)</label>
+                <input type="text" class="form-control" id="" name="feature" placeholder="Enter Features" required>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Specifications ("," seprated)</label>
+                <input type="text" class="form-control" id="" name="specifi" placeholder="Enter specifications" required>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Additional Information ("," seprated)</label>
+                <input type="text" class="form-control" id="" name="addinfo" placeholder="Enter Additional Info" required>
+              </div>
+              <br>
+              <div class="form-group"> 
+                <label for="full_name_id" class="control-label">Upload New Image { Size must be 400 x 400 }</label>
+                <input type="file" class="form-control" id="" name="image" placeholder="Enter your email-id" required>
+              </div>
+              <br>
+            </div>
+            <div class="col-sm-12 text-center">
+              <button class="btn btn-lg btn-info">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
+
   <script>
     function edit(a, b){
       $('#imgname').val(b);
@@ -251,8 +327,6 @@
       $('#2').show();
       $('#1').hide();
     }
-
-
 
     function deleteimage(id){
       $.ajax({
