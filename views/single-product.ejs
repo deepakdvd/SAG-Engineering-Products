@@ -222,7 +222,7 @@
         <div class="product-stock">In Stock</div>
         <hr>
         <div class="btn-group cart">
-          <button type="button" class="btn btn-success" style="background: #69FA4E; border-color: #69FA4E">
+          <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#myModal" style="background: #69FA4E; border-color: #69FA4E; cursor: pointer;">
             Yes! I am interested
           </button>
         </div>
@@ -308,6 +308,57 @@
 
   </div>
 </section>
+
+<div id="myModal" class="modal fade" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-h" style="padding-right: 0px !important;">
+  <div class="modal-dialog" style="max-width: 900px">
+    <div class="modal-content" style="border: none;">
+      <div class="modal-header" style="background-color: #1e90ff;color: white">
+        <h4 class="modal-title">Enquiry form</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form class="mbr-form">
+          <div class="row row-sm-offset">
+              <div class="col-md-4 multi-horizontal">
+                  <div class="form-group">
+                      <label class="form-control-label mbr-fonts-style display-7" for="">Product name</label>
+                      <input type="text" class="form-control" name="" required="" id="">
+                  </div>
+              </div>
+              <div class="col-md-4 multi-horizontal">
+                  <div class="form-group">
+                      <label class="form-control-label mbr-fonts-style display-7" for="">Name</label>
+                      <input type="text" class="form-control" name="" required="" id="">
+                  </div>
+              </div>
+              <div class="col-md-4 multi-horizontal">
+                  <div class="form-group">
+                      <label class="form-control-label mbr-fonts-style display-7" for="">Email</label>
+                      <input type="email" class="form-control" name="" required="" id="">
+                  </div>
+              </div>
+              <div class="col-md-4 multi-horizontal">
+                  <div class="form-group">
+                      <label class="form-control-label mbr-fonts-style display-7" for="">Phone</label>
+                      <input type="tel" class="form-control" name="" id="">
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="form-control-label mbr-fonts-style display-7" for="">Message</label>
+              <textarea type="text" class="form-control" name="" rows="7" id=""></textarea>
+          </div>
+          <span class="input-group-btn">
+              <button type="" class="btn btn-primary btn-form display-4">SEND FORM</button>
+          </span>
+        </form>
+        <!-- <div  class="col-sm-12 text-center">
+          <button class="btn display-4 btn-primary" onclick="shoecatedata()" style="border-radius: 100px">Send</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <section class="mbr-gallery mbr-slider-carousel cid-r1KlZqOYjw" id="gallery2-h" data-rv-view="391" style="background: white">
     <p class="mbr-text mb-0 mbr-fonts-style display-2 text-center">Related Products</p>
