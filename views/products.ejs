@@ -75,246 +75,106 @@
 </section>
 
 <section style="margin-top: 100px" once="" class="cid-r1KDVbGyMx" id="footer6-11" data-rv-view="426" style="background-color: #f9f9f9;">
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-2">PRODUCTS</p>
-                <a class="btn display-4 btn-primary" href="#" style="border-radius: 100px"  data-toggle="modal" data-target="#myModal">Filter by Categories</a>
-                <input type="text" class="btn display-4 btn-primary" name="" oninput="searchtitle(this.value)" style="text-align: center;
-    border-radius: 100px;
-    border: 1px solid #879a9f;
-    background: rgba(0,0,0,0.1);" placeholder="Search..">
-
-            </div>
-        </div>
-    </div>
-</section>
-
-<div id="myModal" class="modal fade" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-h" style="padding-right: 0px !important;">
-    <div class="modal-dialog" style="max-width: 900px">
-        <div class="modal-content">
-            <div class="modal-body">
-               <div class="row">
-                    <div class="col-sm-6" style="text-align: right; font-size: 30px;padding-bottom: 20px;">CATEGORIES </div>
-                   
-                    <div class="col-sm-6" style="text-align: right; font-size: 30px;padding-bottom: 20px;" onclick="shoecatedata()">show</div>
-                  </div>
-                <form>
-                    <div class="row" style="padding-bottom: 50px">
-                        <%
-                        
-                        for(var m=0;m< categories.length;m++){%>
-                      <div class="col-sm-4" style="text-align: center;">
-                        
-                          <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" onchange="categorysort(this)" value="<%=categories[m]._id%>"><%=categories[m]._id%></label>
-                            </div>
-                            
-                      </div>
-                      <%}%>
-                      <!-- <div class="col-sm-4" style="text-align: center;">
-                         <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            
-                      </div>
-                      <div class="col-sm-4" style="text-align: center;">
-                         <div class="checkbox">
-                              <label style="color: black; font-size: 20px;"><input type="checkbox" value="">Option 1</label>
-                            </div>
-                            
-                      </div> -->
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- <section class="mbr-section content4 cid-r1KmmSn8bE" id="content4-j" data-rv-view="386">
-    <div class="container">
-        <div class="media-container-row">
-            <div class="title col-12 col-md-8">
-                <h3 class="mbr-section-subtitle align-center mbr-light mbr-fonts-style display-4">We, "S.A.G. Engineering Products", are a prominent entity engaged in manufacturing, supplying and trading a remarkable gamut of Hospital Equipment and Kitchen Appliances. This offered gamut is developed using supreme quality stainless steel, procured from the accredited vendors of the industry. Furthermore, this assortment is designed and developed with utmost precision as per the requirements of the clients to meet their expectations. Keeping in mind variegated demands of the clients, we offer this range in multiple designs and sizes. Along with this, our clients can avail this range in customized forms, made as per their requirement.
-<div><br></div></h3>
-                
-            </div>
-        </div>
-    </div>
-</section> -->
-
-
-
-<section class="mbr-gallery mbr-slider-carousel cid-r1KlZqOYjw" id="gallery2-h" data-rv-view="391" style="background: white">
   <div class="container">
-      <div><!-- Filter --><!-- Gallery -->
-        <div class="mbr-gallery-row">
-          <div class="mbr-gallery-layout-default">
-            <div>
-              <div id="datashow">
-                <%for(var i=0;i< products.length;i++){%>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">
-                  <div href="#lb-gallery2-h" data-slide-to="0" data-toggle="modal">
-                    <img src="<%=products[i].image.imn%>" alt="image">
-                    <a href="/single-product?id=<%=products[i]._id%>">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7"><%=products[i].Title%></span>
-                    </a>
-                  </div>
-                </div>
-                <%}%>
-                <!-- <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Responsive">
-                  <div href="#lb-gallery2-h" data-slide-to="1" data-toggle="modal">
-                    <img src="assets/images/4-door-refrigerator-500x500.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">4 Door Refrigerator</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Creative">
-                  <div href="#lb-gallery2-h" data-slide-to="2" data-toggle="modal">
-                    <img src="assets/images/hot-display-counter-250x250.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">Hot Display Counter</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Animated">
-                  <div href="#lb-gallery2-h" data-slide-to="3" data-toggle="modal">
-                    <img src="assets/images/hot-bain-marie-kitchen-equipment-500x500.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">Hot Bain Marie Kitchen Equipment</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">
-                  <div href="#lb-gallery2-h" data-slide-to="4" data-toggle="modal">
-                    <img src="assets/images/stainless-steel-food-prep-counter-500x500.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">S.S Food preparation counter</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">
-                  <div href="#lb-gallery2-h" data-slide-to="5" data-toggle="modal">
-                    <img src="assets/images/onion-trolley-250x250.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">Onion Trolley</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Responsive">
-                  <div href="#lb-gallery2-h" data-slide-to="6" data-toggle="modal">
-                    <img src="assets/images/4-door-refrigerator-500x500.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">4 Door Refrigerator</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Animated">
-                  <div href="#lb-gallery2-h" data-slide-to="7" data-toggle="modal">
-                    <img src="assets/images/cooking-gas-range-500x500.jpg" alt="">
-                    <a href="/single-product">
-                      <span class="icon-focus"></span>
-                      <span class="mbr-gallery-title mbr-fonts-style display-7">Cooking gas</span>
-                    </a>
-                  </div>
-                </div> -->
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div><!-- Lightbox -->
-<!--         <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-h">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="assets/images/cage-trolley-250x250.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/4-door-refrigerator-500x500.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/hot-display-counter-250x250.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/hot-bain-marie-kitchen-equipment-500x500.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/stainless-steel-food-prep-counter-500x500.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/onion-trolley-250x250.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/4-door-refrigerator-500x500.jpg" alt="">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="assets/images/cooking-gas-range-500x500.jpg" alt="">
-                  </div>
-                </div>
-                <a class="carousel-control carousel-control-prev" role="button" data-slide="prev" href="#lb-gallery2-h">
-                  <span class="mbri-left mbr-iconfont" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control carousel-control-next" role="button" data-slide="next" href="#lb-gallery2-h">
-                  <span class="mbri-right mbr-iconfont" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-                <a class="close" href="#" role="button" data-dismiss="modal">
-                  <span class="sr-only">Close</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div> -->
+    <div class="media-container-row align-center mbr-white">
+      <div class="col-md-12">
+        <p class="mbr-text mb-0 mbr-fonts-style display-2">PRODUCTS</p>
       </div>
+    </div>
+    <div class="media-container-row align-center mbr-white">
+      <div class="col-md-6 text-center">
+        <a class="btn display-4 btn-primary" href="#" style="border-radius: 100px"  data-toggle="modal" data-target="#myModal">Filter by Categories</a>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="input-group text-center" style="left: 50%;
+    transform: translateX(-50%); max-width: 290px;">
+          <input type="text" class="btn display-4 form-control" name="" style="text-align: center;
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+            border: 1px solid #879a9f;
+            background: rgba(0,0,0,0.1);
+            text-align: center;
+            border-top-left-radius: 100px;
+            border-bottom-left-radius: 100px;
+            border: none;
+            background: rgba(0,0,0,0.1);
+            margin: 0;
+            padding: 1rem 3rem;
+            max-height: 52px;
+            max-width: 250px" placeholder="Search..">
+            <button class="btn display-4" type="submit" style="
+              margin-left: 0px;
+              font-size: 1rem;
+              margin: 0;
+              background: rgba(0,0,0,0.1);
+              border: 1px solid #879a9f;
+              background: rgba(0,0,0,0.1);
+              border-top-right-radius: 100px;
+              border-bottom-right-radius: 100px;
+              padding: 14px 5px;">
+              <span onclick="searchtitle(this.value)" class="mbr-iconfont pr-2 mbri-search" style="margin-right: 0px" media-simple="true"></span>
+            </button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- <section class="cid-r1KlkjV3rp" id="footer1-f" data-rv-view="447">
-    <div class="container">
-        <div class="media-container-row content text-white">
-            <div class="col-12 col-md-3">
-                <div class="media-wrap">
-                    <a href="#">
-                        <img src="assets/images/s-a-g-engineering-products-120x120.jpg" alt="" title="" media-simple="true">
-                    </a>
-                </div>
+<div id="myModal" class="modal fade" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-h" style="padding-right: 0px !important;">
+  <div class="modal-dialog" style="max-width: 900px">
+    <div class="modal-content" style="border: none;">
+      <div class="modal-header" style="background-color: #1e90ff;color: white">
+        <h4 class="modal-title">CATEGORIES</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row" style="padding-bottom: 50px">
+            <%for(var m=0;m< categories.length;m++){%>
+            <div class="col-sm-4">
+              <div class="checkbox">
+                <label style="color: black; font-size: 20px;">
+                  <input type="checkbox" style=" margin-right: 5px;" onchange="categorysort(this)" value="<%=categories[m]._id%>"><%=categories[m]._id%>
+                </label>
+              </div>
             </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    ADDRESS
-                </h5>
-                <p class="mbr-text">G. No. 15, DK Market, Subhash Nagar, Jangleshwar Road Asalpha Village, Ghatkoper West, Survey No. 23, Ghatkopar West, Mumbai - 400086, Maharashtra, India&nbsp;</p>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">
-                    CONTACTS
-                </h5>
-                <p class="mbr-text">
-                    Email: support@qwerty.com
-                    <br>Phone: +91 8071806833
-<br>                    Mobile:&nbsp;+91-7738693814<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  +91-9892084449 <br></p>
-            </div>
-            <div class="col-12 col-md-3 mbr-fonts-style display-7">
-                <h5 class="pb-3">OTHER CONTACT DETAILS</h5>
-                <p class="mbr-text">Branch Office<br>Rahul Gatkal<br>Mobile:
-<br>  +91-9960813070<br><br>Factory
-<br>Ms Reshma<br>Mobile:
-<br>  +91-7738693862<br><br></p>
-            </div>
+            <%}%>
+          </div>
+        </form>
+        <div  class="col-sm-12 text-center">
+          <button class="btn display-4 btn-primary" onclick="shoecatedata()" style="border-radius: 100px">Show</button>
         </div>
+      </div>
     </div>
-</section> -->
+  </div>
+</div>
+
+<section class="mbr-gallery mbr-slider-carousel cid-r1KlZqOYjw" id="gallery2-h" data-rv-view="391" style="background: white">
+  <div class="container">
+    <div><!-- Filter --><!-- Gallery -->
+      <div class="mbr-gallery-row">
+        <div class="mbr-gallery-layout-default">
+          <div>
+            <div id="datashow">
+              <%for(var i=0;i< products.length;i++){%>
+              <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Awesome">
+                <div href="#lb-gallery2-h" data-slide-to="0" data-toggle="modal">
+                  <img src="<%=products[i].image.imn%>" alt="image">
+                  <a href="/single-product?id=<%=products[i]._id%>">
+                    <span class="icon-focus"></span>
+                    <span class="mbr-gallery-title mbr-fonts-style display-7"><%=products[i].Title%></span>
+                  </a>
+                </div>
+              </div>
+              <%}%>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div><!-- Lightbox -->
+    </div>
+  </div>
+</section>
 
 <div class="container-fluid" style="border-top: 1px solid #ddd;">
   <div class="media-container-row content text-white">

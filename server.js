@@ -38,6 +38,10 @@ app.use(bParser.json());
 app.use(bParser.urlencoded({extended:false}));
 
 
+app.get('/resetpass',function(req,res){
+	res.render('resetpass');
+	});
+
 // frontend index pages
 
 app.get('/',square.indexees);
