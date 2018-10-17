@@ -207,7 +207,7 @@ module.exports = () => {
       },
       '/fileupload': (req, res) => {
 
-        var img, cn, imn, features, specifications, category, description, product_detail, additional_info;
+        var img, cn, imn, features, specifications, category, description, product_detail, additional_info,pcode;
         req.busboy.on('field', function (fieldname, val) {
 
           if (fieldname === "imgname") {
@@ -222,9 +222,9 @@ module.exports = () => {
           if (fieldname === "pdetail") {
             product_detail = val;
           }
-          //    if(fieldname==="pdetail2"){
-          //     product_detail2=val;
-          //  }
+             if(fieldname==="pcode"){
+              pcode=val;
+           }
           if (fieldname === "feature") {
             features = val;
           }
@@ -254,7 +254,7 @@ module.exports = () => {
           var featu = features.split(',');
           var speci = specifications.split(',');
           var addti = additional_info.split(',');
-          var product = product_detail.split(';;');
+          var product = product_detail.split(',');
           // var product2=product_detail2.split(',');
           db.collection('products').insert({
             Title: img,
@@ -264,7 +264,8 @@ module.exports = () => {
             specifications: speci,
             product_detail: product,
             additional_info: addti,
-            description: description
+            description: description,
+            product_code:pcode
           }, function (err, result) {
             if (err) throw err;
 
