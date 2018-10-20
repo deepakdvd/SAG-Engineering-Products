@@ -72,7 +72,9 @@ module.exports = () => {
 
           db.collection('products').find({ category: result1.category }).limit(4).toArray( function (err, result) {
             if (err) throw err;
-
+            var temp=result.findIndex(x => x._id == req.query.id);
+            result.splice(temp,1);
+           
           res.render('single-product', { single: result1,related:result });
           });
         });
@@ -143,12 +145,16 @@ module.exports = () => {
         });
       },
       '/changepass': (req, res) => {
-        
         db.collection('userdetail').update({ _id: ObjectId(req.body.id)},{$set:{password:req.body.pass}}, function (err, result) {
 
             res.send(true);
           
         });
+      },
+
+      '/clientorder': (req, res) => {
+        
+        console.log(req.body);
       },
       '/usersignup': (req, res) => {
 

@@ -62,6 +62,10 @@ app.post('/passwordchange',square.indexees);
 app.post('/sendemailotp',square.indexees);
 app.post('/ckeckotp',square.indexees);
 app.post('/changepass',square.indexees);
+app.post('/clientorder',square.indexees);
+
+
+app.post('/clientorder',square.admin);
 
 app.get('/contact',function(req,res){
 	res.render('contact');
