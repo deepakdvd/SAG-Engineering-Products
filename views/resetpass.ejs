@@ -39,11 +39,11 @@
         padding: 15px;">
         An OTP has been sent to your account
       </div>
-      <form action="/session-access" method="post">
+      <form >
         <div class="col-sm-6 col-md-4 col-md-push-4">
           <div class="form-group"> 
             <label for="full_name_id" class="control-label">OTP</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter Username" required>
+            <input type="text" id="otpinput" class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <= 57' maxlength="4" oninput="checkotp(this.value);" name="username" placeholder="Enter OTP" required>
           </div>
           <br>
           <div class="form-group"> 
@@ -53,21 +53,74 @@
           <br>
           <div class="form-group"> 
             <label for="full_name_id" class="control-label">New Password</label>
-            <input type="password" class="form-control" name="pass" placeholder="Enter your password" required>
+            <input type="password" id="newpass" class="form-control" name="pass" placeholder="Enter your password" required>
           </div>
           <br>
           <div class="form-group"> 
             <label for="full_name_id" class="control-label">Confirm New Password</label>
-            <input type="password" class="form-control" name="pass" placeholder="Enter your password" required>
+            <input type="password" id="conpass" class="form-control" name="pass" placeholder="Enter your password" required>
           </div>
           <br>
         </div>
-        <div class="col-sm-12 text-center">
-          <button class="btn btn-lg btn-info">Submit</button>
-        </div>
+        
       </form>
+      <div class="col-sm-12 text-center">
+          <button class="btn btn-lg btn-info" onclick="changingpassword()">Submit</button>
+        </div>
    </div>
   </div>
 
 </body>
 </html>
+
+<script>
+  var otpsuccess;
+  function checkotp(value){
+    console.log(value);
+
+if(value.length>3){
+    $.ajax({
+           type: 'POST',
+          url: '/ckeckotp',
+          data:{otp:value,id:'<%=data._id%>'},
+          success: function(data) {
+           if(data){
+             $('#otpinput').css('border','2px solid green');
+             otpsuccess=true;
+           }else{
+            otpsuccess=false;
+             alert('incorrect OTP');
+             $('#otpinput').css('border','2px solid red');
+           }
+          }
+        });
+      }
+  }
+
+  function changingpassword(){
+    var newpass=$('#newpass').val();
+    var conpass=$('#conpass').val();
+    if(otpsuccess){
+      if(newpass!='' || conpass!=''){
+      if(newpass==conpass){
+      $.ajax({
+           type: 'POST',
+          url: '/changepass',
+          data:{pass:newpass,id:'<%=data._id%>'},
+          success: function(data) {
+          alert('password successfully change');
+          window.location.replace('/login');
+           console.log(data);
+          }
+        });
+      
+      }else{
+        alert('New password And Confirmed Password Does Not Match')
+      }
+    }
+
+    }else{
+      alert('Please Enter Correct OTP')
+    }
+  }
+</script>

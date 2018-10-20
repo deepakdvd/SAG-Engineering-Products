@@ -88,7 +88,7 @@
       <div class="col-md-6 text-center">
         <div class="input-group text-center" style="left: 50%;
     transform: translateX(-50%); max-width: 290px;">
-          <input type="text" class="btn display-4 form-control" name="" style="text-align: center;
+          <input type="text" id="filternameid"class="btn display-4 form-control" name="" style="text-align: center;
             border-top-left-radius: 100px;
             border-bottom-left-radius: 100px;
             border: 1px solid #879a9f;
@@ -112,7 +112,7 @@
               border-top-right-radius: 100px;
               border-bottom-right-radius: 100px;
               padding: 14px 5px;">
-              <span onclick="searchtitle(this.value)" class="mbr-iconfont pr-2 mbri-search" style="margin-right: 0px" media-simple="true"></span>
+              <span onclick="searchtitle($('#filternameid').val())" class="mbr-iconfont pr-2 mbri-search" style="margin-right: 0px" media-simple="true"></span>
             </button>
         </div>
       </div>
@@ -134,7 +134,7 @@
             <div class="col-sm-4">
               <div class="checkbox">
                 <label style="color: black; font-size: 20px;">
-                  <input type="checkbox" style=" margin-right: 5px;" onchange="categorysort(this)" value="<%=categories[m]._id%>"><%=categories[m]._id%>
+                  <input type="checkbox" style=" margin-right: 5px;" id="tyty" onchange="categorysort(this)" value="<%=categories[m]._id%>"><%=categories[m]._id%>
                 </label>
               </div>
             </div>
@@ -215,9 +215,12 @@
   var catelist=[];
   function categorysort(data){
     
+    
     if($(data).prop("checked") == true){
       var temp=$(data).val();
+      
       catelist.push(temp);
+     
       
     }else{
       var temp1=$(data).val();
@@ -233,7 +236,8 @@
 
     $.ajax({
            type: 'POST',
-          url: '/selectedcate?data='+catelist,
+          url: '/selectedcate',
+          data:{temp:catelist.toString()},
           success: function(data) {
             
             $('#datashow').empty();
@@ -257,7 +261,7 @@
   }
 
   function searchtitle(title){
-   
+   console.log(title);
     if(title.length>3){
     $.ajax({
            type: 'POST',

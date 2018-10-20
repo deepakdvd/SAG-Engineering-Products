@@ -20,9 +20,25 @@ module.exports = () => {
   let routes = {
     'get': {
       '/': (req, res) => {
-        db.collection('products').find({}).limit(8).toArray(function (err, result1) {
+        var R;
+
+        db.collection('products').find({}).toArray(function (err, result) {
           if (err) throw err;
-          res.render('index', { random: result1 });
+
+          for (let i = result.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [result[i], result[j]] = [result[j], result[i]];
+
+            if(result.length==i+1){
+              res.render('index', { random: result });
+            }
+        }
+          
+          // R = Math.floor(Math.random() * result.length);
+          // console.log(R);
+          // db.collection('products').find({}).limit(12).toArray(function (err, result1) {
+          // res.render('index', { random: result1 });
+          // });
         });
       },
 
@@ -105,7 +121,7 @@ module.exports = () => {
       
       },
       '/logout': (req, res) => {
-        console.log("helllllo");
+       
         req.session.reset();
       
       res.redirect('/login');
@@ -114,6 +130,26 @@ module.exports = () => {
 
     },
     'post': {
+      '/ckeckotp': (req, res) => {
+        
+        db.collection('userdetail').findOne({ _id: ObjectId(req.body.id)}, function (err, result) {
+
+          if(req.body.otp==result.OTP){
+            res.send(true);
+          }else{
+            res.send(false);
+          }
+          
+        });
+      },
+      '/changepass': (req, res) => {
+        
+        db.collection('userdetail').update({ _id: ObjectId(req.body.id)},{$set:{password:req.body.pass}}, function (err, result) {
+
+            res.send(true);
+          
+        });
+      },
       '/usersignup': (req, res) => {
 
         db.collection('user').insert({
@@ -155,14 +191,20 @@ module.exports = () => {
 
       '/selectedcate': (req, res) => {
         var list=[];
-        var Data=req.query.data.split(',');
+       
+        var Data=req.body.temp.split(',');
+        
         
         db.collection('products').find({}).toArray( function (err, result) {
           if (err) throw err;
           if(result.length>0){
+          
           for(var i=0;i<result.length;i++){
+           
             for(var j=0;j<Data.length;j++)
+            
             if(Data[j]==result[i].category){
+              
               list.push(result[i]);
             }
             if(result.length==i+1){
@@ -178,9 +220,11 @@ module.exports = () => {
       
       '/searchtitle':(req, res)=>{
 
-        db.collection('products').find({ Title: { $regex: req.query.data } }).toArray( function (err, result) {
+var temp= '/'+req.query.data+'/i'
+        db.collection('products').find({ Title: {$regex:req.query.data,$options:'i'} }).toArray( function (err, result) {
           if (err) throw err;
 
+           
           res.send(result);
         });
 
@@ -197,6 +241,49 @@ module.exports = () => {
       //   });
       },
 
+      '/sendemailotp': (req, res) => {
+
+        db.collection('userdetail').findOne({ username: req.body.otpemail}, function (err, result) {
+
+          if(req.body.otpemail === result.username){
+
+          
+
+        var val = Math.floor(1000 + Math.random() * 9000);
+
+
+        var transporter = nodemailer.createTransport({
+          // host: 'smtp.zoho.com',
+          //  port: 465,
+          //  secure: true, 
+          service: 'gmail',
+         auth: {
+           user: 'rahulworks273@gmail.com',
+           pass: 'rAHUL273@'
+         }
+       });
+       
+       var mailOptions = {
+         from: 'rahulworks273@gmail.com',
+         to: 'rahulthakare273@gmail.com',
+         subject: 'OTP',
+         html: 'The One Time Password Is <b>'+val+'<b>'
+       };
+       
+       transporter.sendMail(mailOptions, function(error, info){
+         if (error) {
+           return console.log(error);
+         } else {
+           console.log('Email sent: ' + info.response);
+           db.collection('userdetail').update({_id: ObjectId(result._id)},{$set:{OTP:val}}, function (err, result1) {
+            res.render('resetpass',{data:result});
+           });
+         }
+       });
+      }else{}
+
+      });
+      },
 
 
       '/allimages': (req, res) => {

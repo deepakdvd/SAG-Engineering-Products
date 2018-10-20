@@ -66,6 +66,9 @@
           <div class="row">
             <div class="col-sm-12" style="text-align: center; font-size: 30px;padding-bottom: 20px;">Invalid Username/Password </div>
           </div>
+          <div class="col-sm-12 text-center">
+            <button class="btn btn-lg btn-info" onclick="closemodal()">Submit</button>
+            </div>
         </div>
       </div>
     </div>
@@ -80,16 +83,23 @@
           <h4 class="modal-title">Reset password</h4>
         </div>
         <div class="modal-body" style="overflow: auto;">
-          <form >
+          <form action="sendemailotp" method="post">
             <div class="col-sm-12">
               <div class="form-group"> 
                 <label for="full_name_id" class="control-label">Username/Email</label>
-                <input type="text" class="form-control" name="username" placeholder="Enter username" required>
+                <input type="text" class="form-control" name="otpemail" placeholder="Enter username" required>
               </div>
+             
+              <!-- <div class="form-group"> 
+                  <p style="color:green"> An OTP Has Been Send To Your Email Id</p>
+                <label for="full_name_id" class="control-label">Enter OTP</label>
+                <input type="text"  class="form-control" name="otp" placeholder="Enter OTP">
+                <button></button>
+              </div> -->
               <br>
             </div>
             <div class="col-sm-12 text-center">
-            <button class="btn btn-lg btn-info" href="/resetpass">Submit</button>
+            <button class="btn btn-lg btn-info" >Submit</button>
             </div>
           </form>
         </div>
@@ -100,10 +110,20 @@
 
   <%if(invalid){%>
     <script>
-      console.log("hello");
-      $('#myModal').modal('show');
+      
+      //$('#myModal').modal('show');
+      $('#myModal').modal({backdrop:'static',keyboard:false, show:true});
+      // window.location.replace('/login');
+
   </script>
   <%}%>
+
+  <script>
+  function closemodal(){
+    $('#myModal').modal('hide');
+    window.location.replace('/login');
+  }
+  </script>
 
 </body>
 </html>
