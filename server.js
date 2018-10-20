@@ -38,9 +38,9 @@ app.use(bParser.json());
 app.use(bParser.urlencoded({extended:false}));
 
 
-app.get('/resetpass',function(req,res){
-	res.render('resetpass');
-	});
+// app.get('/resetpass',function(req,res){
+// 	res.render('resetpass');
+// 	});
 
 app.get('/edit-product',function(req,res){
 	res.render('edit-product');
@@ -64,7 +64,9 @@ app.post('/selectedcate',square.indexees);
 app.post('/searchtitle',square.indexees);
 app.post('/session-access',square.indexees);
 app.post('/passwordchange',square.indexees);
-
+app.post('/sendemailotp',square.indexees);
+app.post('/ckeckotp',square.indexees);
+app.post('/changepass',square.indexees);
 
 app.get('/contact',function(req,res){
 	res.render('contact');
