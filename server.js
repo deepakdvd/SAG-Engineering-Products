@@ -42,6 +42,11 @@ app.use(bParser.urlencoded({extended:false}));
 // 	res.render('resetpass');
 // 	});
 
+app.get('/edit-product',function(req,res){
+	res.render('edit-product');
+	});
+
+
 // frontend index pages
 
 app.get('/',square.indexees);
