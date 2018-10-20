@@ -42,6 +42,11 @@ app.get('/resetpass',function(req,res){
 	res.render('resetpass');
 	});
 
+app.get('/edit-product',function(req,res){
+	res.render('edit-product');
+	});
+
+
 // frontend index pages
 
 app.get('/',square.indexees);
