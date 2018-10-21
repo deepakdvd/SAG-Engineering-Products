@@ -107,16 +107,15 @@ module.exports = () => {
         ], function (err, result) {
           if (err) throw err;
 
-          db.collection('products').find({}).toArray(function (err, result1) {
-            if (err) throw err;
+          
 
             if(req.query.resp){
-              res.render('dashboard', { alldata: result1, categories: result,savesuccess:true });
+              res.render('dashboard', { categories: result,savesuccess:true });
             }else{
-              res.render('dashboard', { alldata: result1, categories: result,savesuccess:false });
+              res.render('dashboard', { categories: result,savesuccess:false });
             }
             
-          });
+        
 
         });
       }
@@ -152,10 +151,10 @@ module.exports = () => {
         });
       },
 
-      '/clientorder': (req, res) => {
+      // '/clientorder': (req, res) => {
         
-        console.log(req.body);
-      },
+      //   console.log(req.body);
+      // },
       '/usersignup': (req, res) => {
 
         db.collection('user').insert({
@@ -286,7 +285,7 @@ var temp= '/'+req.query.data+'/i'
            });
          }
        });
-      }else{}
+      }
 
       });
       },

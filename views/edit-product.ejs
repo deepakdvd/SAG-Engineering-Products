@@ -107,56 +107,22 @@
             <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
           </div>
         </div>
+        <%for(var i=0;i < alldata.length; i++){
+         
+          %>
         <div class="col-sm-12 col-md-10 col-md-push-1" style="padding: 10px;border-bottom: 1px solid #ccc">
-          <div class="col-sm-4"><img src="https://via.placeholder.com/100x100"></div> 
-          <div class="col-sm-4"><h2></h2></div>
+          <div class="col-sm-4"><img src="<%=alldata[i].image.imn%>"  width="100" height="100"></div> 
+          <div class="col-sm-4"><h2><%=alldata[i].Title%></h2></div>
           <div class="col-sm-4">
             <h2>
-              <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn btn-danger btn-lg" onclick="">Delete</button>
+              
+              <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2" onclick="editproduct('<%=JSON.stringify(alldata[i])%>')">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-danger btn-lg" onclick="deleteimage('<%=alldata[i]._id%>')">Delete</button>
             </h2>
            </div>
         </div>
-        <div class="col-sm-12 col-md-10 col-md-push-1" style="padding: 10px;border-bottom: 1px solid #ccc">
-          <div class="col-sm-4"><img src="https://via.placeholder.com/100x100"></div> 
-          <div class="col-sm-4"><h2></h2></div>
-          <div class="col-sm-4">
-            <h2>
-              <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn btn-danger btn-lg" onclick="">Delete</button>
-            </h2>
-           </div>
-        </div>
-        <div class="col-sm-12 col-md-10 col-md-push-1" style="padding: 10px;border-bottom: 1px solid #ccc">
-          <div class="col-sm-4"><img src="https://via.placeholder.com/100x100"></div> 
-          <div class="col-sm-4"><h2></h2></div>
-          <div class="col-sm-4">
-            <h2>
-              <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn btn-danger btn-lg" onclick="">Delete</button>
-            </h2>
-           </div>
-        </div>
-        <div class="col-sm-12 col-md-10 col-md-push-1" style="padding: 10px;border-bottom: 1px solid #ccc">
-          <div class="col-sm-4"><img src="https://via.placeholder.com/100x100"></div> 
-          <div class="col-sm-4"><h2></h2></div>
-          <div class="col-sm-4">
-            <h2>
-              <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn btn-danger btn-lg" onclick="">Delete</button>
-            </h2>
-           </div>
-        </div>
-        <div class="col-sm-12 col-md-10 col-md-push-1" style="padding: 10px;border-bottom: 1px solid #ccc">
-          <div class="col-sm-4"><img src="https://via.placeholder.com/100x100"></div> 
-          <div class="col-sm-4"><h2></h2></div>
-          <div class="col-sm-4">
-            <h2>
-              <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal2">Edit</button>&nbsp;&nbsp;&nbsp;&nbsp;
-              <button class="btn btn-danger btn-lg" onclick="">Delete</button>
-            </h2>
-           </div>
-        </div>
+        <%}%>
+        
       </div>
       <!-- Edit modal form -->
       <div class="modal fade" id="myModal2" role="dialog">
@@ -170,6 +136,10 @@
               <form action="update" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="unameid" id="unameid">
                 <div class="col-sm-12">
+
+                    <input type="text" style="display:none" class="form-control" id="pid" name="pid">
+                    <input type="text" style="display:none" class="form-control" id="oldimage" name="oldimg">
+
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Enter new Name</label>
                     <input type="text" class="form-control" id="imgname" name="imgname" placeholder="" readonly>
@@ -177,39 +147,48 @@
                   <br>
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Category</label>
-                    <input type="text" class="form-control" id="" name="cate" placeholder="Enter Category" required>
+                    <input type="text" class="form-control" id="catename" name="cate" placeholder="Enter Category" readonly>
                   </div>
                   <br>
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Description</label>
-                    <textarea type="text" class="form-control" rows="4" cols="50" id="" name="desc" placeholder="Enter Description" required></textarea>
+                    <textarea type="text" class="form-control" rows="4" cols="50" id="desc" name="desc" placeholder="Enter Description" ></textarea>
                   </div>
                   <br>
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Product Detail</label>
-                    <input type="text" class="form-control" id="" name="pdetail" placeholder="Enter Product Detail" required>
+                    <input type="text" class="form-control" id="pdetail" name="pdetail" placeholder="Enter Product Detail" >
                   </div>
                   <br>
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Features ("," seprated)</label>
-                    <input type="text" class="form-control" id="" name="feature" placeholder="Enter Features" required>
+                    <input type="text" class="form-control" id="feature" name="feature" placeholder="Enter Features" >
                   </div>
                   <br>
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Specifications ("," seprated)</label>
-                    <input type="text" class="form-control" id="" name="specifi" placeholder="Enter specifications" required>
+                    <input type="text" class="form-control" id="specifi" name="specifi" placeholder="Enter specifications" >
                   </div>
                   <br>
                   <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Additional Information ("," seprated)</label>
-                    <input type="text" class="form-control" id="" name="addinfo" placeholder="Enter Additional Info" required>
+                    <input type="text" class="form-control" id="addinfo" name="addinfo" placeholder="Enter Additional Info" >
                   </div>
                   <br>
                   <div class="form-group"> 
+                      <label for="full_name_id" class="control-label">Product Code</label>
+                      <input type="text" class="form-control" id="productcode" name="productcode" readonly>
+                    </div>
+                    <br>
+                  <div class="form-group"> 
                     <label for="full_name_id" class="control-label">Upload New Image { Size must be 400 x 400 }</label>
-                    <input type="file" class="form-control" id="" name="image" placeholder="Enter your email-id" required>
+                    <input type="file" class="form-control" id="imgg" name="image" placeholder="Enter New Image" required>
                   </div>
                   <br>
+                  <div class="form-group"> 
+                      <img src="" id="showimage" alt="image" width="110" height="110">
+                    </div>
+                    <br>
                 </div>
                 <div class="col-sm-12 text-center">
                   <button class="btn btn-lg btn-info">Submit</button>
@@ -250,11 +229,30 @@
            type: 'POST',
           url: '/imgdelete?id='+id,
           success: function(data) {
-            alert('Image sucessfully Deleted')
+            alert('Image sucessfully Deleted');
+            window.location.replace('/edit-product');
           }
         });
      
     }
+    function editproduct(data){
+      
+      var dt=JSON.parse(data);
+      $('#pid').val(dt._id);
+      $('#imgname').val(dt.Title);
+      $('#catename').val(dt.category);
+      $('#pdetail').val(dt.product_detail);
+      $('#feature').val(dt.features);
+      $('#specifi').val(dt.specifications);
+      $('#addinfo').val(dt.additional_info);
+      $('#productcode').val(dt.product_code);
+      $('#desc').val(dt.description);
+
+      $('#oldimage').val(dt.image.cn);
+      $('#showimage').attr('src',dt.image.imn);
+      
+    }
+    
 
 
     // function logout(){
@@ -280,10 +278,15 @@
     //     }
     // })
     function showloader(){
-      console.log("helelelelelele");
+      
       $('#load').show();
     }
 
   </script>
+  <%if(response){%>
+    <script>
+        alert('Product Successfully Updated');
+      </script>
+  <%}%>
 </body>
 </html>

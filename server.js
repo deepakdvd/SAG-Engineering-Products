@@ -26,7 +26,7 @@ app.enable ('view cache');
 app.use(session({
 	cookieName: 'session',
 	secret: 'naio1#2ospox9029(*&9{}nskjn;;',
-	duration: 30*60*1000,//24 * 60 * 60 * 1000,
+	duration: 24*60*60*1000,//24 * 60 * 60 * 1000,
 	//activeDuration: 5 * 60 * 1000,
 	 httpOnly: true,
 	secure: true,
@@ -42,11 +42,6 @@ app.use(bParser.urlencoded({extended:false}));
 // 	res.render('resetpass');
 // 	});
 
-app.get('/edit-product',function(req,res){
-	res.render('edit-product');
-	});
-
-
 // frontend index pages
 
 app.get('/',square.indexees);
@@ -56,6 +51,7 @@ app.get('/login',square.indexees);
 app.get('/dashboard',square.indexees);
 app.get('/single-product',square.indexees);
 app.get('/logout',square.indexees);
+
 
 app.post('/fileupload',square.indexees);
 app.post('/allimages',square.indexees);
@@ -67,10 +63,12 @@ app.post('/passwordchange',square.indexees);
 app.post('/sendemailotp',square.indexees);
 app.post('/ckeckotp',square.indexees);
 app.post('/changepass',square.indexees);
-app.post('/clientorder',square.indexees);
 
+//admin page routs
+app.get('/edit-product',square.admin);
 
 app.post('/clientorder',square.admin);
+app.post('/updateproduct',square.admin);
 
 app.get('/contact',function(req,res){
 	res.render('contact');
