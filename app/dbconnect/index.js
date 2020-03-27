@@ -1,8 +1,11 @@
 'use strict';
 
-const db=require('mongoskin').db('mongodb://sagengineering:sag123456@ds115523.mlab.com:15523/sagengineering');  
+const db=require('mongoskin').db('mongodb://Rahul:Rahul273@ds115523.mlab.com:15523/sagengineering');  
+
+//mongodb://sagengineering:sag123456@ds115523.mlab.com:15523/sagengineering
 
 //module.exports.db;
+
 
 exports.fdata= function(){
 	return db;
