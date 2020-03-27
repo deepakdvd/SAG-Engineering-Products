@@ -74,6 +74,23 @@
     </div>
   </div>
 
+
+  <!-- Invalid Email Id Modal -->
+  <div id="myEmail" class="modal fade" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-h" style="padding-right: 0px !important;">
+    <div class="modal-dialog" style="max-width: 900px">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12" style="text-align: center; font-size: 30px;padding-bottom: 20px;">Invalid Email Id/Please Enter Registered Email Id </div>
+          </div>
+          <div class="col-sm-12 text-center">
+            <button class="btn btn-lg btn-info" onclick="closeEmailModal()">Submit</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Reset password modal -->
   <div class="modal fade" id="myModal2" role="dialog">
     <div class="modal-dialog">
@@ -106,6 +123,7 @@
       </div>
     </div>
   </div>
+  
 
 
   <%if(invalid){%>
@@ -118,9 +136,25 @@
   </script>
   <%}%>
 
+  <%if(invalidEmail){%>
+    <script>
+      console.log("jhzgsdfgsdfgzsgh");
+      //$('#myModal').modal('show');
+      $('#myEmail').modal({backdrop:'static',keyboard:false, show:true});
+      // window.location.replace('/login');
+
+  </script>
+  <%}%>
+
   <script>
+    console.log("testt")
   function closemodal(){
     $('#myModal').modal('hide');
+    window.location.replace('/login');
+  }
+
+  function closeEmailModal(){
+    $('#myEmail').modal('hide');
     window.location.replace('/login');
   }
   </script>
