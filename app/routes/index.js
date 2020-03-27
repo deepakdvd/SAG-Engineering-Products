@@ -22,10 +22,8 @@ module.exports = () => {
       '/': (req, res) => {
         try {
           var R;
-
           db.collection('products').find({}).toArray(function (err, result) {
             if (err) throw err;
-
             for (let i = result.length - 1; i > 0; i--) {
               const j = Math.floor(Math.random() * (i + 1));
               [result[i], result[j]] = [result[j], result[i]];
@@ -33,6 +31,9 @@ module.exports = () => {
               if (result.length == i + 1) {
                 res.render('index', { random: result });
               }
+            }
+            if(result.length==0){
+              res.render('index', { random: [] });
             }
 
             // R = Math.floor(Math.random() * result.length);

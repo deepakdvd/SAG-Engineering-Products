@@ -31,8 +31,8 @@
     "url": "https://github.com/deepakdvd/SAG-Engineering-Products/issues"
   },
   "engines": {
-    "node": "6.11.3",
-    "npm": "3.10.10"
+    "node": "12.14.1",
+    "npm": "6.13.4"
   },
   "homepage": "https://github.com/deepakdvd/SAG-Engineering-Products#readme"
 }
